@@ -1,17 +1,38 @@
-```html
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>John Kenneth P. Lucero | Portfolio</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <style type="text/tailwindcss">
+        @custom-variant dark (&:where(.dark, .dark *));
+
+        @theme {
+            --color-primary: #b91c1c;
+            --color-navy: #0f172a;
+            --color-accent: #f8fafc;
+        }
+
+        @layer components {
+            .btn-primary {
+                @apply rounded-lg bg-primary px-6 py-3 font-semibold text-white transition-colors hover:bg-red-700;
+            }
+
+            .section-title {
+                @apply mb-3 text-3xl font-bold text-slate-900 dark:text-white;
+            }
+
+            .card {
+                @apply rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg dark:border-slate-700 dark:bg-slate-900;
+            }
+
+            .form-input {
+                @apply w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none focus:border-red-700 dark:border-slate-700 dark:bg-slate-900 dark:text-white;
+            }
         }
 
         html {
@@ -20,321 +41,303 @@
 
         body {
             font-family: Arial, sans-serif;
-            background: #111827;
-            color: #f9fafb;
-            line-height: 1.6;
-        }
-
-        header {
-            padding: 20px 8%;
-            background: #030712;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        nav ul {
-            display: flex;
-            gap: 20px;
-            list-style: none;
-        }
-
-        a {
-            color: #60a5fa;
-            text-decoration: none;
-        }
-
-        nav a {
-            color: white;
-        }
-
-        a:hover {
-            color: #38bdf8;
-        }
-
-        button {
-            padding: 10px 15px;
-            background: #2563eb;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #1d4ed8;
-        }
-
-        .hero {
-            text-align: center;
-            padding: 70px 20px;
-            background: #1f2937;
-        }
-
-        .hero h1 {
-            font-size: 36px;
-            margin-bottom: 10px;
-        }
-
-        .hero span {
-            color: #60a5fa;
-        }
-
-        .hero p {
-            margin: 0 auto 20px;
-            max-width: 550px;
-            color: #d1d5db;
-        }
-
-        main {
-            max-width: 1000px;
-            margin: 30px auto;
-            padding: 0 20px;
-        }
-
-        section {
-            margin-bottom: 25px;
-            padding: 25px;
-            background: #1f2937;
-            border-radius: 8px;
-        }
-
-        section h2 {
-            color: #60a5fa;
-            margin-bottom: 10px;
-        }
-
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .card {
-            padding: 18px;
-            background: #374151;
-            border-radius: 6px;
-        }
-
-        .card h3 {
-            margin-bottom: 8px;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        input,
-        textarea {
-            padding: 12px;
-            border: 1px solid #4b5563;
-            border-radius: 5px;
-            background: #111827;
-            color: white;
-            font: inherit;
-        }
-
-        textarea {
-            resize: vertical;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: #030712;
-        }
-
-        /* Light mode */
-        body.light {
-            background: #f3f4f6;
-            color: #111827;
-        }
-
-        .light header,
-        .light footer {
-            background: #e5e7eb;
-        }
-
-        .light nav a {
-            color: #111827;
-        }
-
-        .light .hero,
-        .light section {
-            background: white;
-        }
-
-        .light .hero p {
-            color: #4b5563;
-        }
-
-        .light .card {
-            background: #e5e7eb;
-        }
-
-        .light input,
-        .light textarea {
-            background: white;
-            color: #111827;
-            border-color: #d1d5db;
-        }
-
-        @media (max-width: 700px) {
-            nav {
-                flex-direction: column;
-            }
-
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            .hero h1 {
-                font-size: 28px;
-            }
-
-            .cards {
-                grid-template-columns: 1fr;
-            }
         }
     </style>
 </head>
 
-<body>
+<body class="bg-slate-50 text-slate-800 transition-colors dark:bg-slate-950 dark:text-slate-200">
 
-    <header>
-        <nav>
-            <h2>JKL Portfolio</h2>
+   
+    <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/95 dark:border-slate-800 dark:bg-slate-950/95">
+        <nav class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4">
+            <a href="#home" class="text-xl font-bold text-red-700">
+                JK<span class="text-slate-900 dark:text-white">.Portfolio</span>
+            </a>
 
-            <ul>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contact</a></li>
+            <ul class="hidden items-center gap-6 text-sm font-medium md:flex">
+                <li><a href="#about" class="hover:text-red-700">About</a></li>
+                <li><a href="#projects" class="hover:text-red-700">Projects</a></li>
+                <li><a href="#services" class="hover:text-red-700">Services</a></li>
+                <li><a href="#contact" class="hover:text-red-700">Contact</a></li>
             </ul>
 
-            <button id="themeButton" type="button">
-                Light Mode
+            <button id="themeButton"
+                class="rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold hover:border-red-700 dark:border-slate-700"
+                type="button">
+                ☀ Light Mode
             </button>
         </nav>
     </header>
 
-    <div class="hero">
-        <h1>Hello, I'm <span>John Kenneth P. Lucero</span></h1>
-        <p>
-            I create websites, develop systems, and manage databases
-            to help solve business problems.
-        </p>
-        <a href="#contact">
-            <button type="button">Contact Me</button>
-        </a>
-    </div>
-
     <main>
+      
+        <section id="home" class="mx-auto grid max-w-6xl items-center gap-12 px-6 py-20 md:grid-cols-2 md:py-28">
 
-        <section id="projects">
-            <h2>My Projects</h2>
-            <p>Some of my development projects.</p>
+            <div>
+                <p class="mb-4 font-semibold uppercase tracking-widest text-red-700">
+                    My portfolio
+                </p>
 
-            <div class="cards">
-                <div class="card">
-                    <h3>Personal Portfolio</h3>
-                    <p>A website that presents my skills and work.</p>
+                <h1 class="text-4xl font-bold leading-tight text-slate-900 dark:text-white md:text-6xl">
+                     I'm,
+                      <span class="text-red-700">John Kenneth P. Lucero</span>
+                </h1>
+
+                <h2 class="mt-4 text-xl font-semibold text-slate-600 dark:text-slate-300">
+                    Information Systems Student 
+                </h2>
+
+                <p class="mt-5 max-w-lg leading-7 text-slate-600 dark:text-slate-400">
+                    I am passionate about technology, web development,
+                    and creating systems that solve real-world problems.
+                    I enjoy learning new skills and improving my programming knowledge.
+                </p>
+
+                <div class="mt-8 flex flex-wrap gap-4">
+                    <a href="#projects" class="btn-primary">View My Work</a>
+                    <a href="#contact"
+                        class="rounded-lg border border-slate-300 px-6 py-3 font-semibold hover:border-red-700 hover:text-red-700 dark:border-slate-700">
+                        Contact Me
+                    </a>
                 </div>
+            </div>
 
-                <div class="card">
-                    <h3>Payroll System</h3>
-                    <p>A system for managing employee salaries.</p>
-                </div>
-
-                <div class="card">
-                    <h3>Compliance Monitoring</h3>
-                    <p>A system for tracking compliance requirements.</p>
+            <div class="flex justify-center">
+                <div
+                    class="flex h-64 w-64 items-center justify-center rounded-full border-8 border-red-700 bg-slate-900 shadow-xl md:h-80 md:w-80">
+                    <div class="text-center">
+                        <p class="text-7xl font-bold text-white md:text-8xl">JK</p>
+                        <p class="mt-3 text-sm tracking-widest text-red-400">
+                            FUTURE IT PROFESSIONAL
+                        </p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="services">
-            <h2>My Services</h2>
+        <section id="about" class="bg-white py-20 dark:bg-slate-900">
+            <div class="mx-auto max-w-4xl px-6">
+                <p class="mb-2 font-semibold uppercase tracking-widest text-red-700">
+                    Get to know me
+                </p>
 
-            <div class="cards">
-                <div class="card">
-                    <h3>Web Development</h3>
-                    <p>Creating responsive websites.</p>
+                <h2 class="section-title">About Me</h2>
+
+                <p class="leading-8 text-slate-600 dark:text-slate-400">
+                    My name is John Kenneth P. Lucero, and I am an
+                    Information Systems student at Colegio de Sta. Ana de
+                    Victorias, Inc. I am interested in web development,
+                    system development, and database management. I enjoy
+                    exploring technology, solving problems, and learning
+                    how to build useful applications. My goal is to improve
+                    my technical skills and become a professional who can
+                    create reliable and user-friendly information systems.
+                </p>
+
+                <h3 class="mb-4 mt-8 text-xl font-bold text-slate-900 dark:text-white">
+                    My Skills
+                </h3>
+
+                <div class="flex flex-wrap gap-3">
+
+                    <span
+                        class="rounded-full bg-red-100 px-4 py-2 text-sm font-semibold text-red-800 dark:bg-red-950 dark:text-red-300">HTML</span>
+                    <span
+                        class="rounded-full bg-red-100 px-4 py-2 text-sm font-semibold text-red-800 dark:bg-red-950 dark:text-red-300">CSS</span>
+                    <span
+                        class="rounded-full bg-red-100 px-4 py-2 text-sm font-semibold text-red-800 dark:bg-red-950 dark:text-red-300">Tailwind
+                        CSS</span>
+                    <span
+                        class="rounded-full bg-red-100 px-4 py-2 text-sm font-semibold text-red-800 dark:bg-red-950 dark:text-red-300">PHP
+                        / Laravel</span>
+                    <span
+                        class="rounded-full bg-red-100 px-4 py-2 text-sm font-semibold text-red-800 dark:bg-red-950 dark:text-red-300">Database
+                        Management</span>
+                    <span
+                        class="rounded-full bg-red-100 px-4 py-2 text-sm font-semibold text-red-800 dark:bg-red-950 dark:text-red-300">Database
+                        </span>
                 </div>
 
-                <div class="card">
-                    <h3>System Development</h3>
-                    <p>Building systems for business needs.</p>
-                </div>
+                <p class="mt-6 text-sm text-slate-500 dark:text-slate-400">
+                    These are suggested skills. Keep only the ones you have
+                    learned or practiced.
+                </p>
+            </div>
+        </section>
 
-                <div class="card">
-                    <h3>Database Management</h3>
-                    <p>Organizing and managing data.</p>
+        
+        <section id="projects" class="mx-auto max-w-6xl px-6 py-20">
+            <p class="mb-2 font-semibold uppercase tracking-widest text-red-700">
+                My work
+            </p>
+            <h2 class="section-title">My Projects</h2>
+            <p class="mb-10 text-slate-600 dark:text-slate-400">
+                Here are some projects I have worked on or plan to develop.
+            </p>
+
+            <div class="grid gap-6 md:grid-cols-3">
+                <article class="card">
+                    <div class="mb-4 text-3xl"></div>
+                    <h3 class="mb-3 text-xl font-bold text-slate-900 dark:text-white">
+                        Personal Portfolio
+                    </h3>
+                    <p class="leading-7 text-slate-600 dark:text-slate-400">
+                        A website that introduces me, presents my skills,
+                        and showcases my development work.
+                    </p>
+                    <p class="mt-4 text-sm font-semibold text-red-700">
+                        HTML · Tailwind CSS · JavaScript
+                    </p>
+                </article>
+
+                <article class="card">
+                    <div class="mb-4 text-3xl"></div>
+                    <h3 class="mb-3 text-xl font-bold text-slate-900 dark:text-white">
+                        Payroll System
+                    </h3>
+                    <p class="leading-7 text-slate-600 dark:text-slate-400">
+                        A proposed system for organizing employee information
+                        and managing salary records.
+                    </p>
+                    <p class="mt-4 text-sm font-semibold text-red-700">
+                        System Development
+                    </p>
+                </article>
+
+                <article class="card">
+                    <div class="mb-4 text-3xl"></div>
+                    <h3 class="mb-3 text-xl font-bold text-slate-900 dark:text-white">
+                        Digital Canteen System
+                    </h3>
+                    <p class="leading-7 text-slate-600 dark:text-slate-400">
+                        A web-based project designed to let customers view
+                        menus and place canteen orders.
+                    </p>
+                    <p class="mt-4 text-sm font-semibold text-red-700">
+                        Web · Database · Ordering
+                    </p>
+                </article>
+            </div>
+        </section>
+
+      
+        <section id="services" class="bg-white py-20 dark:bg-slate-900">
+            <div class="mx-auto max-w-6xl px-6">
+                <p class="mb-2 font-semibold uppercase tracking-widest text-red-700">
+                    What I am learning
+                </p>
+                <h2 class="section-title">My Services</h2>
+                <p class="mb-10 text-slate-600 dark:text-slate-400">
+                    Areas where I am building my skills and experience.
+                </p>
+
+                <div class="grid gap-6 md:grid-cols-3">
+                    <div class="card">
+                        <h3 class="mb-3 text-xl font-bold text-slate-900 dark:text-white">
+                            Web Development
+                        </h3>
+                        <p class="leading-7 text-slate-600 dark:text-slate-400">
+                            Building simple, responsive, and user-friendly websites.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="mb-3 text-xl font-bold text-slate-900 dark:text-white">
+                            System Development
+                        </h3>
+                        <p class="leading-7 text-slate-600 dark:text-slate-400">
+                            Learning to develop systems that help organize
+                            information and improve everyday tasks.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="mb-3 text-xl font-bold text-slate-900 dark:text-white">
+                            Database Management
+                        </h3>
+                        <p class="leading-7 text-slate-600 dark:text-slate-400">
+                            Organizing data and learning to create
+                            structured databases and relationships.
+                        </p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="contact">
-            <h2>Contact Me</h2>
-            <p>Have a project in mind? Send me a message.</p>
+     
+        <section id="contact" class="mx-auto max-w-3xl px-6 py-20">
+            <p class="mb-2 font-semibold uppercase tracking-widest text-red-700">
+                Get in touch
+            </p>
 
-            <form id="contactForm">
-                <label for="name">Name</label>
-                <input type="text" id="name" placeholder="Enter your name" required>
+            <h2 class="section-title">Contact Me</h2>
+            <p class="mb-8 leading-7 text-slate-600 dark:text-slate-400">
+                Have a question or want to discuss a project? Send me a message.
+            </p>
 
-                <label for="email">Email</label>
-                <input type="email" id="email" placeholder="Enter your email" required>
+            <form id="contactForm" class="space-y-5">
+                <div>
+                    <label for="name" class="mb-2 block font-semibold">Name</label>
+                    <input type="text" id="name" name="name" class="form-input" placeholder="Enter your name" required>
+                </div>
 
-                <label for="message">Message</label>
-                <textarea id="message" rows="4" placeholder="Write your message" required></textarea>
+                <div>
+                    <label for="email" class="mb-2 block font-semibold">Email</label>
+                    <input type="email" id="email" name="email" class="form-input" placeholder="Enter your email"
+                        required>
+                </div>
 
-                <button type="submit">Send Message</button>
+                <div>
+                    <label for="message" class="mb-2 block font-semibold">Message</label>
+                    <textarea id="message" name="message" rows="5" class="form-input" placeholder="Write your message"
+                        required></textarea>
+                </div>
+
+                <button type="submit" class="btn-primary">
+                    Send Message
+                </button>
+
+                <p id="formStatus" aria-live="polite" class="text-sm font-medium text-red-700"></p>
             </form>
-
-            <p id="formStatus" aria-live="polite"></p>
         </section>
-
     </main>
 
-    <footer>
-        <p>&copy; 2026 John Kenneth P. Lucero. </p>
+  
+    <footer class="border-t border-slate-200 bg-white py-6 text-center dark:border-slate-800 dark:bg-slate-950">
+        <p class="text-sm text-slate-500 dark:text-slate-400">
+            © 2026 John Kenneth P. Lucero. All rights reserved.
+        </p>
     </footer>
 
     <script>
-        // Switch between dark and light mode
+        // Dark and light mode
         const themeButton = document.getElementById("themeButton");
+        const page = document.documentElement;
 
         themeButton.addEventListener("click", function () {
-            document.body.classList.toggle("light");
+            page.classList.toggle("dark");
 
-            themeButton.textContent =
-                document.body.classList.contains("light")
-                    ? "Dark Mode"
-                    : "Light Mode";
+            if (page.classList.contains("dark")) {
+                themeButton.textContent = " Light Mode";
+            } else {
+                themeButton.textContent = " Dark Mode";
+            }
         });
 
-        // Contact form message
-        document.getElementById("contactForm")
-            .addEventListener("submit", function (event) {
-                event.preventDefault();
+       
+        const contactForm = document.getElementById("contactForm");
+        const formStatus = document.getElementById("formStatus");
 
-                document.getElementById("formStatus").textContent =
-                    "Thank you! A backend is needed to deliver your message.";
+        contactForm.addEventListener("submit", function (event) {
+            event.preventDefault();
 
-                this.reset();
-            });
+            formStatus.textContent =
+                "Thank you! Your form was submitted, but a backend is needed to deliver your message.";
+
+            contactForm.reset();
+        });
     </script>
 
 </body>
 
 </html>
-```
